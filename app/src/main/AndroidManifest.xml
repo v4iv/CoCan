@@ -9,8 +9,10 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity" android:screenOrientation="portrait">
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +22,7 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.v4ivstudio.cocan.LOGINACTIVITY" />
 
@@ -28,19 +30,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ParseActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="com.v4ivstudio.cocan.PARSEACTIVITY" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".SignupActivity"
             android:label="@string/title_activity_signup"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.v4ivstudio.cocan.SIGNUPACTIVITY" />
 
@@ -50,7 +42,7 @@
         <activity
             android:name=".WallActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.v4ivstudio.cocan.WALLACTIVITY" />
 
@@ -60,9 +52,43 @@
         <activity
             android:name=".ForgotPasswordActivity"
             android:label="Change Password"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.v4ivstudio.cocan.FORGOTPASSWORDACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UserActivity"
+            android:label="@string/title_activity_user"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.v4ivstudio.cocan.WallActivity" />
+
+            <intent-filter>
+                <action android:name="com.v4ivstudio.cocan.USERACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.v4ivstudio.cocan.SETTINGSACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CommentActivity"
+            android:label="@string/title_activity_comment"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.v4ivstudio.cocan.COMMENTACTIVITY" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

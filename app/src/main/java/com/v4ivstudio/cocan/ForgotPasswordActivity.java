@@ -1,9 +1,8 @@
 package com.v4ivstudio.cocan;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +15,9 @@ import com.parse.ParseUser;
 import com.parse.RequestPasswordResetCallback;
 
 
-public class ForgotPasswordActivity extends Activity {
+public class ForgotPasswordActivity extends ActionBarActivity {
 
+    public Toolbar toolbar;
     protected EditText fpemail;
     protected Button fpchange;
     protected TextView message;
@@ -28,6 +28,8 @@ public class ForgotPasswordActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
         Parse.initialize(this, "Y1BfDVrSpsOFfCqhesLXhfKYyYFyw1cm3kt0SgYj", "vYvn95xmRgOky76HPh69JaHgGA32K9AnVpaL7kEL");
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
         fpemail = (EditText) findViewById(R.id.fpemail);
         fpchange = (Button) findViewById(R.id.fpchange);
         message = (TextView) findViewById(R.id.message);

@@ -13,19 +13,16 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Vaibhav Sharma on 12/7/2014.
+ * Created by Vaibhav Sharma on 12/15/2014.
  */
-public class UpdateAdapter extends ArrayAdapter<ParseObject> {
-
+public class PostAdapter extends ArrayAdapter<ParseObject> {
     protected Context sContext;
-    protected List<ParseObject> sStatus;
+    protected List<ParseObject> sPost;
 
-
-    public UpdateAdapter(Context context, List<ParseObject> status) {
-        super(context, R.layout.updatelayout, status);
+    public  PostAdapter(Context context, List<ParseObject> posts) {
+        super(context, R.layout.updatelayout, posts);
         sContext = context;
-        sStatus = status;
-
+        sPost = posts;
     }
 
     @Override
@@ -44,7 +41,7 @@ public class UpdateAdapter extends ArrayAdapter<ParseObject> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        ParseObject statusUpdate = sStatus.get(position);
+        ParseObject statusUpdate = sPost.get(position);
 
         //Username
         String usrnm = statusUpdate.getString("Username");
@@ -68,5 +65,4 @@ public class UpdateAdapter extends ArrayAdapter<ParseObject> {
         TextView updateWall;
         TextView updateTimeWall;
     }
-
 }

@@ -1,8 +1,9 @@
 package com.v4ivstudio.cocan;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,20 +16,24 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends ActionBarActivity {
+    public Toolbar toolbar;
     protected EditText usrnm;
     protected EditText pswd;
     protected Button signin;
     protected Button signup;
-    private String username;
-    private String password;
     protected TextView erroruorp;
     protected TextView forgotpswd;
+    private String username;
+    private String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Parse.initialize(this, "Y1BfDVrSpsOFfCqhesLXhfKYyYFyw1cm3kt0SgYj", "vYvn95xmRgOky76HPh69JaHgGA32K9AnVpaL7kEL");
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
         usrnm = (EditText) findViewById(R.id.userName);
         pswd = (EditText) findViewById(R.id.password);
         erroruorp = (TextView) findViewById(R.id.erroruorp);
@@ -73,16 +78,17 @@ public class LoginActivity extends Activity {
     }
 
 
-    private void loginSuccessful()
-    {
+    private void loginSuccessful() {
         Intent wallActivity = new Intent("com.v4ivstudio.cocan.WALLACTIVITY");
         startActivity(wallActivity);
         Toast.makeText(LoginActivity.this, "Welcome", Toast.LENGTH_LONG).show();
     }
-    public void usernameOrPasswordIsInvalid(){
+
+    public void usernameOrPasswordIsInvalid() {
         erroruorp.setText("Username or Password is invalid!");
     }
-    public void somethingWentWrong(){
+
+    public void somethingWentWrong() {
         //erroruorp.setText("Oops! Something went wrong, please try later.");
         Toast.makeText(LoginActivity.this, "Oops! Something went wrong, try again later.", Toast.LENGTH_LONG).show();
     }

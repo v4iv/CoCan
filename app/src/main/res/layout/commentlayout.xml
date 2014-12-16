@@ -9,41 +9,40 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/useric"
+        android:id="@+id/usrSil"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:src="@drawable/ic_action_person"
-        android:layout_alignBottom="@+id/usrView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text=""
-        android:id="@+id/usrView"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/useric"
-        android:layout_toEndOf="@+id/useric"
-        android:clickable="true" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=""
-        android:id="@+id/updtView"
-        android:layout_below="@+id/useric"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignBottom="@+id/cmmtView" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text=""
-        android:id="@+id/timeView"
-        android:layout_below="@+id/updtView"
+        android:id="@+id/usrNmV"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/usrSil"
+        android:layout_toEndOf="@+id/usrSil" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/cmmtView"
+        android:layout_below="@+id/usrNmV"
+        android:layout_toRightOf="@+id/usrSil"
+        android:layout_toEndOf="@+id/usrSil" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=""
+        android:id="@+id/timView"
+        android:layout_below="@+id/cmmtView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

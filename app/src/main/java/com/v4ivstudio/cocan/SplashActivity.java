@@ -1,11 +1,8 @@
 package com.v4ivstudio.cocan;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.parse.Parse;
 import com.parse.ParseUser;
@@ -39,11 +36,12 @@ public class SplashActivity extends Activity {
         timer.start();
 
     }
-    private void loginSuccessful()
-    {
+
+    private void loginSuccessful() {
         Intent wallActivity = new Intent("com.v4ivstudio.cocan.WALLACTIVITY");
         startActivity(wallActivity);
     }
+
     @Override
     protected void onPause() {
         super.onPause();

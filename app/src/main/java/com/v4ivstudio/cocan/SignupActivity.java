@@ -1,10 +1,9 @@
 package com.v4ivstudio.cocan;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,27 +15,26 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 
-public class SignupActivity extends Activity {
+public class SignupActivity extends ActionBarActivity {
 
+    public Toolbar toolbar;
     protected EditText name;
     protected EditText username;
     protected EditText email;
     protected EditText password;
     protected Button signup;
-
     private String nm;
     private String usr;
     private String em;
     private String pswd;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         Parse.initialize(this, "Y1BfDVrSpsOFfCqhesLXhfKYyYFyw1cm3kt0SgYj", "vYvn95xmRgOky76HPh69JaHgGA32K9AnVpaL7kEL");
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
         name = (EditText) findViewById(R.id.NameSU);
         username = (EditText) findViewById(R.id.UsernmSU);
         email = (EditText) findViewById(R.id.emailSU);
@@ -45,10 +43,10 @@ public class SignupActivity extends Activity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nm=name.getText().toString();
-                usr=username.getText().toString();
-                em=email.getText().toString();
-                pswd=password.getText().toString();
+                nm = name.getText().toString();
+                usr = username.getText().toString().toLowerCase();
+                em = email.getText().toString();
+                pswd = password.getText().toString();
 
                 ParseUser user = new ParseUser();
                 user.put("name", nm);
@@ -59,21 +57,10 @@ public class SignupActivity extends Activity {
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {
                         if (e == null) {
-                           loginSuccessful();
+                            loginSuccessful();
                             finish();
-                        } else  {
-                            Toast.makeText(SignupActivity.this, "Oops! Something went wrong, try again later.", Toast.LENGTH_LONG).show();
-                            /*AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
-                            builder.setMessage("Fields Cannot Be Empty");
-                            builder.setTitle("Error");
-                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                            AlertDialog dialog = builder.create();
-                            dialog.show();*/
+                        } else {
+                            Toast.makeText(SignupActivity.this, "Oops! Something went wrong, Check the details and Try again.", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -81,8 +68,8 @@ public class SignupActivity extends Activity {
             }
         });
     }
-    private void loginSuccessful()
-    {
+
+    private void loginSuccessful() {
         Intent wallActivity = new Intent("com.v4ivstudio.cocan.WALLACTIVITY");
         startActivity(wallActivity);
     }

@@ -13,18 +13,17 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Vaibhav Sharma on 12/7/2014.
+ * Created by Vaibhav Sharma on 12/14/2014.
  */
-public class UpdateAdapter extends ArrayAdapter<ParseObject> {
-
+public class CommentAdapter extends ArrayAdapter<ParseObject> {
     protected Context sContext;
-    protected List<ParseObject> sStatus;
+    protected List<ParseObject> sComment;
 
 
-    public UpdateAdapter(Context context, List<ParseObject> status) {
-        super(context, R.layout.updatelayout, status);
+    public CommentAdapter(Context context, List<ParseObject> status) {
+        super(context, R.layout.commentlayout, status);
         sContext = context;
-        sStatus = status;
+        sComment = status;
 
     }
 
@@ -33,40 +32,39 @@ public class UpdateAdapter extends ArrayAdapter<ParseObject> {
         final ViewHolder holder;
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(sContext).inflate(R.layout.updatelayout, null);
+            convertView = LayoutInflater.from(sContext).inflate(R.layout.commentlayout, null);
             holder = new ViewHolder();
-            holder.usernameWall = (TextView) convertView.findViewById(R.id.usrView);
-            holder.updateWall = (TextView) convertView.findViewById(R.id.updtView);
-            holder.updateTimeWall = (TextView) convertView.findViewById(R.id.timeView);
+            holder.usernameCmmt = (TextView) convertView.findViewById(R.id.usrNmV);
+            holder.contntCmmt = (TextView) convertView.findViewById(R.id.cmmtView);
+            holder.postTimeCmmt = (TextView) convertView.findViewById(R.id.timView);
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        ParseObject statusUpdate = sStatus.get(position);
+        ParseObject statusUpdate = sComment.get(position);
 
         //Username
         String usrnm = statusUpdate.getString("Username");
-        holder.usernameWall.setText(usrnm);
+        holder.usernameCmmt.setText(usrnm);
 
         //Status Update
-        String updt = statusUpdate.getString("Status");
-        holder.updateWall.setText(updt);
+        String updt = statusUpdate.getString("Content");
+        holder.contntCmmt.setText(updt);
 
         //Created At
         Date created = statusUpdate.getCreatedAt();
         String cAT = created.toString();
-        holder.updateTimeWall.setText(cAT);
+        holder.postTimeCmmt.setText(cAT);
 
 
         return convertView;
     }
 
     public static class ViewHolder {
-        TextView usernameWall;
-        TextView updateWall;
-        TextView updateTimeWall;
+        TextView usernameCmmt;
+        TextView contntCmmt;
+        TextView postTimeCmmt;
     }
-
 }
