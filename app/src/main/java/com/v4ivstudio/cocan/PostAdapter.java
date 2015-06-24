@@ -1,68 +1,78 @@
 package com.v4ivstudio.cocan;
 
-import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.parse.ParseObject;
 
-import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Vaibhav Sharma on 12/15/2014.
- */
-public class PostAdapter extends ArrayAdapter<ParseObject> {
-    protected Context sContext;
-    protected List<ParseObject> sPost;
+ * Created by Vaibhav Sharma on 6/24/2015.
+ **/
+public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
-    public  PostAdapter(Context context, List<ParseObject> posts) {
-        super(context, R.layout.updatelayout, posts);
-        sContext = context;
-        sPost = posts;
+    public String usrnm;
+    protected List<ParseObject> sStatus;
+    public static String objectId;
+
+
+    // Provide a suitable constructor
+    public PostAdapter(List<ParseObject> status) {
+        sStatus = status;
     }
 
+    // Create new views (invoked by the layout manager)
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final ViewHolder holder;
+    public PostAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        if (convertView == null) {
-            convertView = LayoutInflater.from(sContext).inflate(R.layout.updatelayout, null);
-            holder = new ViewHolder();
-            holder.usernameWall = (TextView) convertView.findViewById(R.id.usrView);
-            holder.updateWall = (TextView) convertView.findViewById(R.id.updtView);
-            holder.updateTimeWall = (TextView) convertView.findViewById(R.id.timeView);
+        // create a new view
+        View convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_post, parent, false);
+        // set the view's size, margins, paddings and layout parameters
 
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
+        ViewHolder holder = new ViewHolder(convertView);
+        return holder;
+    }
 
-        ParseObject statusUpdate = sPost.get(position);
+    // Replace the contents of a view (invoked by the layout manager)
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        // - get element from your dataset at this position
+        // - replace the contents of the view with that element
 
+        ParseObject statusUpdate = sStatus.get(position);
         //Username
-        String usrnm = statusUpdate.getString("Username");
+        usrnm = statusUpdate.getString("Username");
         holder.usernameWall.setText(usrnm);
 
         //Status Update
         String updt = statusUpdate.getString("Status");
         holder.updateWall.setText(updt);
 
-        //Created At
-        Date created = statusUpdate.getCreatedAt();
-        String cAT = created.toString();
-        holder.updateTimeWall.setText(cAT);
-
-
-        return convertView;
+        //Object ID
+        objectId = statusUpdate.getObjectId();
     }
 
-    public static class ViewHolder {
-        TextView usernameWall;
-        TextView updateWall;
-        TextView updateTimeWall;
+    @Override
+    public int getItemCount() {
+        return sStatus.size();
+    }
+
+    // Provide a reference to the views for each data item
+    // Complex data items may need more than one view per item, and
+    // you provide access to all the views for a data item in a view holder
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        // each data item is just a string in this case
+        public TextView usernameWall;
+        public TextView updateWall;
+
+        public ViewHolder(View v) {
+            super(v);
+            usernameWall = (TextView) v.findViewById(R.id.usrView);
+            updateWall = (TextView) v.findViewById(R.id.updtView);
+        }
     }
 }

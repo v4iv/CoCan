@@ -13,81 +13,55 @@
         layout="@layout/app_bar" />
 
     <EditText
-        android:id="@+id/userName"
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/password"
         android:layout_alignEnd="@+id/password"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignLeft="@+id/password"
         android:layout_alignRight="@+id/password"
-        android:hint="Username" />
+        android:layout_alignStart="@+id/password"
+        android:hint="@string/username" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/loginButton"
-        style="@style/AppTheme"
+        android:id="@+id/signIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/password"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignRight="@+id/password"
+        android:layout_alignStart="@+id/password"
         android:layout_below="@+id/password"
-        android:layout_centerHorizontal="true"
-        android:clickable="false"
-        android:elevation="5dp"
-        android:text="Sign In"
-        android:textColor="#ffffffff" />
+        android:text="@string/signin" />
 
     <TextView
-        android:id="@+id/usrView"
+        android:id="@+id/orText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/signup"
+        android:layout_below="@+id/signIn"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:text="OR"
-        android:textStyle="italic" />
+        android:text="or"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
-        android:id="@+id/signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:elevation="5dp"
-        android:text="Sign Up"
-        android:textColor="#ffffffff" />
-
-    <TextView
-        android:id="@+id/erroruorp"
+        android:id="@+id/signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/userName"
-        android:layout_centerHorizontal="true"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#ffff0a22"
-        android:textColorHighlight="#ffff8688" />
-
-    <TextView
-        android:id="@+id/forgotpswd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/usrView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="18dp"
-        android:clickable="true"
-        android:elevation="5dp"
-        android:text="Forgot Password?"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_alignEnd="@+id/signIn"
+        android:layout_alignLeft="@+id/signIn"
+        android:layout_alignRight="@+id/signIn"
+        android:layout_alignStart="@+id/signIn"
+        android:layout_below="@+id/orText"
+        android:text="@string/signup" />
 
 </RelativeLayout>

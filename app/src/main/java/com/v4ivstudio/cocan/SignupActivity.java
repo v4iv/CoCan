@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -17,60 +16,72 @@ import com.parse.SignUpCallback;
 
 public class SignupActivity extends ActionBarActivity {
 
-    public Toolbar toolbar;
-    protected EditText name;
-    protected EditText username;
-    protected EditText email;
-    protected EditText password;
-    protected Button signup;
-    private String nm;
-    private String usr;
-    private String em;
-    private String pswd;
+    private String name;
+    private String usernameText;
+    private String passwordText;
+    private String passwordVerifyText;
+    private String emailText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        Parse.initialize(this, "Y1BfDVrSpsOFfCqhesLXhfKYyYFyw1cm3kt0SgYj", "vYvn95xmRgOky76HPh69JaHgGA32K9AnVpaL7kEL");
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        name = (EditText) findViewById(R.id.NameSU);
-        username = (EditText) findViewById(R.id.UsernmSU);
-        email = (EditText) findViewById(R.id.emailSU);
-        password = (EditText) findViewById(R.id.PasswordSU);
-        signup = (Button) findViewById(R.id.signupbutton);
-        signup.setOnClickListener(new View.OnClickListener() {
+
+        final EditText fullname = (EditText) findViewById(R.id.name);
+        final EditText username = (EditText) findViewById(R.id.username);
+        final EditText password = (EditText) findViewById(R.id.password);
+        final EditText passwordVerify = (EditText) findViewById(R.id.passwordVerify);
+        final EditText eMail = (EditText) findViewById(R.id.eMail);
+        Button signUpButton = (Button) findViewById(R.id.signUpButton);
+
+        signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nm = name.getText().toString();
-                usr = username.getText().toString().toLowerCase();
-                em = email.getText().toString();
-                pswd = password.getText().toString();
 
-                ParseUser user = new ParseUser();
-                user.put("name", nm);
-                user.setUsername(usr);
-                user.setPassword(pswd);
-                user.setEmail(em);
+                passwordText = password.getText().toString();
+                passwordVerifyText = passwordVerify.getText().toString();
+                name = fullname.getText().toString();
+                usernameText = username.getText().toString();
+                emailText = eMail.getText().toString();
 
-                user.signUpInBackground(new SignUpCallback() {
-                    public void done(ParseException e) {
-                        if (e == null) {
-                            loginSuccessful();
-                            finish();
-                        } else {
-                            Toast.makeText(SignupActivity.this, "Oops! Something went wrong, Check the details and Try again.", Toast.LENGTH_LONG).show();
+                if (usernameText.equals("") || passwordText.equals("") || passwordVerifyText.equals("") || name.equals("") || emailText.equals("")) {
+                    Toast.makeText(SignupActivity.this, "Fields Cannot Be Empty!", Toast.LENGTH_LONG).show();
+                } else if (passwordVerifyText.equals(passwordText)) {
+                    ParseUser parseUser = new ParseUser();
+
+                    parseUser.put("name", name);
+                    parseUser.setUsername(usernameText);
+                    parseUser.setPassword(passwordText);
+                    parseUser.setEmail(emailText);
+
+                    parseUser.signUpInBackground(new SignUpCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e == null) {
+                                signUpSuccessful();
+                                finish();
+                            } else {
+                                Toast.makeText(SignupActivity.this, "Oops! Something went wrong, Check the details and Try again.", Toast.LENGTH_LONG).show();
+                            }
                         }
-                    }
-                });
+                    });
+
+                } else {
+                    Toast.makeText(SignupActivity.this, "Password Do Not Match!", Toast.LENGTH_LONG).show();
+                }
 
             }
         });
     }
 
-    private void loginSuccessful() {
-        Intent wallActivity = new Intent("com.v4ivstudio.cocan.WALLACTIVITY");
-        startActivity(wallActivity);
+    void signUpSuccessful() {
+        Intent basicInfoActivity = new Intent("com.v4ivstudio.cocan.BASICINFOACTIVITY");
+        startActivity(basicInfoActivity);
+        Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show();
     }
+
 }

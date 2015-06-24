@@ -4,4 +4,7 @@
     <color name="primaryColorDark">#388E3C</color>
     <color name="accentColor">#00E676</color>
     <color name="customColor">#0091EA</color>
+    <color name="fab_accent">#1DE9B6</color>
+    <color name="fab_accent_pressed">#00BFA5</color>
+    <color name="fab_accent_ripple">#64FFDA</color>
 </resources>

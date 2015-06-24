@@ -13,54 +13,107 @@
         layout="@layout/app_bar" />
 
     <EditText
-        android:id="@+id/NameSU"
-        android:layout_width="match_parent"
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/UsernmSU"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:hint="Name" />
-
-    <EditText
-        android:id="@+id/UsernmSU"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/emailSU"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:hint="Username" />
-
-    <EditText
-        android:id="@+id/emailSU"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
+        android:layout_above="@+id/username"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignStart="@+id/password"
         android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:hint="full name"
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/PasswordSU"
-        android:layout_width="match_parent"
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/emailSU"
+        android:layout_above="@+id/password"
+        android:layout_alignEnd="@+id/password"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignRight="@+id/password"
+        android:layout_alignStart="@+id/password"
+        android:hint="username in lowercase" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/passwordVerify"
+        android:layout_alignLeft="@+id/passwordVerify"
+        android:layout_alignStart="@+id/passwordVerify"
         android:ems="10"
-        android:hint="Password"
+        android:hint="choose password"
         android:inputType="textPassword" />
 
+    <EditText
+        android:id="@+id/passwordVerify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/eMail"
+        android:layout_alignStart="@+id/eMail"
+        android:ems="10"
+        android:hint="verify password"
+        android:inputType="textPassword"
+        android:layout_above="@+id/eMail" />
+
+    <EditText
+        android:id="@+id/eMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="email(will be verified)"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/eMail"
+        android:layout_alignLeft="@+id/eMail"
+        android:layout_alignRight="@+id/eMail"
+        android:layout_alignStart="@+id/eMail"
+        android:layout_below="@+id/eMail"
+        android:text="@string/acceptRegister"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/primaryColorDark"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/tncButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:linksClickable="false"
+        android:text="@string/tnc"
+        android:textColor="#ff1168ff" />
+
+    <TextView
+        android:id="@+id/privacyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tncButton"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:text="@string/privacy"
+        android:textAlignment="center"
+        android:textColor="#ff1168ff" />
+
     <Button
-        android:id="@+id/signupbutton"
+        android:id="@+id/signUpButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp"
-        android:elevation="5dp"
-        android:text="Sign Up"
-        android:textColor="#ffffffff" />
+        android:layout_alignEnd="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_below="@+id/privacyButton"
+        android:layout_marginTop="38dp"
+        android:text="@string/signup" />
+
 
 </RelativeLayout>
